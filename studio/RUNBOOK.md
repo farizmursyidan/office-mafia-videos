@@ -16,7 +16,22 @@ Chromium for rendering: `/opt/pw-browsers/chromium_headless_shell-*/chrome-linux
 (find the exact path with `ls -d /opt/pw-browsers/chromium_headless_shell-*`). Machine has 2 CPU cores:
 never run renders in parallel.
 
-## 1. Pick the day number, topic and post time
+## 1. Refresh stats for earlier videos (Notion)
+
+Before making the new video, update every earlier row in the Notion Videos data source:
+- Metricool `getScheduledPosts` from the first Publish date to now: posts with status PUBLISHED give the
+  public YouTube, TikTok and Instagram URLs. Set Status "Published" once at least the YouTube post is live
+  (never change a row whose Status is "Archived"), and fill YouTube URL, TikTok URL, Instagram URL.
+- Metricool analytics (`getAnalyticsDataByMetrics`, range = first Publish date to today):
+  - TikTok per video: TKPO03 (url), TKPO07 views, TKPO08 likes, TKPO10 shares. Match rows by video id in the URL.
+  - Instagram reels: IGRE06 (url), IGRE23 views. Match by URL or publish date.
+  - YouTube per video: YTVV05 (url), YTVV06 views, YTVV11 comments, YTVV08 avg view duration. Write to
+    Views and Comments only when the value is not null. Metricool's YouTube per-video numbers can lag or
+    stay empty; never overwrite a number someone typed in with an empty value.
+  - Do not fetch youtube.com pages directly (YouTube blocks automated reads).
+- Set "Stats updated" to today on every row you refreshed.
+
+## 2. Pick the day number, topic and post time
 
 - Query the Notion Videos data source. Day N = highest `Day` + 1.
 - Read every existing Title and Hook so the new topic does not repeat one already covered.
@@ -24,7 +39,7 @@ never run renders in parallel.
   (videos are always made one day ahead). If that moment is less than 2 hours away or already past,
   use the next day at 20:45.
 
-## 2. Write the script (brand rules)
+## 3. Write the script (brand rules)
 
 Voice: a sharp friend explaining office politics over coffee. Practical, slightly conspiratorial, never
 preachy, never motivational-poster. English only.
@@ -50,7 +65,7 @@ Description (hook, the 3 moves as a list, the comment question, then exactly:
 "The full office politics playbook:\nhttps://officemafia.gumroad.com/l/officemafiaebook\n\nDaily office politics on Threads: @officemafia99\n\n#officepolitics #careeradvice #corporatelife #worktips #shorts"),
 and page content with the voiceover text and a scene plan table. Follow the Day 8 page as the template.
 
-## 3. Voice
+## 4. Voice
 
 ```bash
 cd ~/office-mafia-videos/studio
@@ -65,7 +80,7 @@ python3 tools/asr_segments.py public/voice/dayN_raw.wav
   0.5 s before the closing question. Keep the total voice under 56 s. The tool prints remapped times
   for every timestamp you pass; use those for scene and caption timing.
 
-## 4. Build the video (Remotion)
+## 5. Build the video (Remotion)
 
 - Copy `src/Day8.tsx` to `src/DayN.tsx` as the starting point, rename `SCENES8`/`DAY8_DURATION`/`Day8`,
   register it in `src/Root.tsx`.
@@ -98,11 +113,11 @@ npx remotion render src/index.ts DayN out/dayN_raw.mp4 --browser-executable=<chr
 Verify: duration under 60 s, loudness about -14 LUFS (`ffmpeg -i f -af ebur128=peak=true -f null -`),
 and look at a 14-frame contact sheet of the final MP4.
 
-## 5. Publish
+## 6. Publish
 
 1. Copy the MP4 to the repo root, commit ("Add Day N: <Name>"), push. Confirm
    `https://raw.githubusercontent.com/farizmursyidan/office-mafia-videos/main/<file>.mp4` returns 200.
-2. Metricool (blogId and timezone in the task prompt): two scheduled posts at the chosen time, media =
+2. Metricool (blogId and timezone in the task prompt): three scheduled posts (YouTube, TikTok, Instagram) at the chosen time, media =
    the raw GitHub URL.
    - YouTube: provider youtube, text = the Notion Description, firstCommentText =
      "The full office politics playbook: https://officemafia.gumroad.com/l/officemafiaebook",
@@ -111,11 +126,14 @@ and look at a 14-frame contact sheet of the final MP4.
    - TikTok: provider tiktok, a shorter caption (hook, one line, the question with a pointing-down emoji,
      "Full office politics playbook: link in bio", hashtags #officepolitics #careeradvice #corporatelife
      #worktok #career), tiktokData {privacyOption "PUBLIC_TO_EVERYONE", title, all toggles false}.
+   - Instagram: provider instagram, the same caption style as TikTok but with hashtags
+     #officepolitics #careeradvice #corporatelife #worklife #career,
+     instagramData {type "REEL", showReelOnFeed true, isAiGenerated false}. Same time as the others.
    - If Metricool returns "Failed to normalize media", wait a minute and retry once.
 3. Update the Notion row: Status "Scheduled", Duration (s), Publish date (datetime, +07:00),
    Pinned comment checked, Learnings (one line on anything that went wrong or was learned).
 
-## 6. Safety rules
+## 7. Safety rules
 
 - Never schedule a video that failed any check. If something cannot be fixed, set the Notion row's
   Status to "Script ready" or "Rendered", write the problem in Learnings, and stop.
