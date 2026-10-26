@@ -8,6 +8,7 @@ import {Day6, DAY6_DURATION} from './Day6';
 import {Day7, DAY7_DURATION} from './Day7';
 import {Day8, DAY8_DURATION} from './Day8';
 import {Day9, DAY9_DURATION} from './Day9';
+import {Day10, DAY10_DURATION} from './Day10';
 import {CharTest} from './CharTest';
 import {FPS, s} from './theme';
 
@@ -20,6 +21,7 @@ export const Root: React.FC = () => (
     <Composition id="Day7" component={Day7} durationInFrames={s(DAY7_DURATION)} fps={FPS} width={1080} height={1920} />
     <Composition id="Day8" component={Day8} durationInFrames={s(DAY8_DURATION)} fps={FPS} width={1080} height={1920} />
     <Composition id="Day9" component={Day9} durationInFrames={s(DAY9_DURATION)} fps={FPS} width={1080} height={1920} />
+    <Composition id="Day10" component={Day10} durationInFrames={s(DAY10_DURATION)} fps={FPS} width={1080} height={1920} />
     <Composition id="CharTest" component={CharTest} durationInFrames={60} fps={FPS} width={1080} height={1920} />
   </>
 );
