@@ -87,11 +87,16 @@ python3 tools/asr_segments.py public/voice/dayN_raw.wav
 
 - Copy `src/Day8.tsx` to `src/DayN.tsx` as the starting point, rename `SCENES8`/`DAY8_DURATION`/`Day8`,
   register it in `src/Root.tsx`.
-- Motion style (owner feedback, Day 13): smooth, not bouncy. Use `src/Day13.tsx` as the reference for motion:
-  eased entrances (`ez` helper, expo ease out) instead of low-damping springs, crossfades between scenes
-  (each Sequence runs 0.35 s past its end under the next scene), staggered rows, strike-throughs and
-  highlights that draw across instead of popping, gentle idle float or breathing, word-by-word serif reveals,
-  a drifting glow on dark cards, and a thin progress bar at the top.
+- Motion style (owner feedback, Day 13): smooth, not bouncy. Use `src/Day13.tsx` and `src/day13/` as the template
+  (copy the folder to `src/dayN/`): one file per scene plus `kit.tsx`, scenes chained in `<TransitionSeries>` from
+  `@remotion/transitions` (12 frame slide, wipe or fade; each sequence lasts until the next scene's start + 12 frames),
+  every scene also registered as its own composition in a `DayN-Scenes` folder in `Root.tsx`.
+  Animate with `interpolate()` + `Easing.bezier`/`Easing.spring({damping: 200})`, a keyframed `Camera` zoom on the
+  important element, staggered rows, gentle float or breathing, and hand-drawn annotations from
+  `@remotion/rough-notation` (CrossedOff, Circle, StrikeThrough, Highlight, Underline) driven by `progress`.
+  Pass CSS `scale` as a string (`String(x)`): React appends px to a numeric `scale` and the zoom silently does nothing.
+  Do not use WebGL transitions or `@remotion/effects` (light leaks, blur-slide): they need `--gl=swangle` and render
+  at about 3 s per frame on this machine.
 - Every scene must show something specific to the script, not just text. Mix:
   - animated character scenes (Person, Fg scaler, Table/desk, CoffeeStation, Screen, Spotlight from
     Day6 to Day8),
