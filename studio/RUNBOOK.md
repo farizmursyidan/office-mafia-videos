@@ -49,7 +49,10 @@ Hard rules:
 - 125 to 150 words, so the final video lands at 50 to 58 seconds. Must stay under 60 s.
 - No pause tags like `<short pause>` (TTS reads them aloud). Pauses are added in the edit.
 - Structure:
-  1. Hook (1 to 2 short sentences, a specific uncomfortable truth about office life)
+  1. Hook (1 to 3 very short sentences, under 2.5 s each). Talk to "you", make it about something happening
+     to the viewer right now, and end on tension, e.g. "Your company is planning a reorg right now. Your boss
+     already knows. You'll be the last to know." Avoid generic openers ("X is never a surprise", "Here's why").
+     The first frame must already show the hook's main visual (no empty card fading in), with motion within 0.5 s.
   2. One line of context or "the rule nobody tells you"
   3. Three numbered moves ("Move one: ...", or "Rule one", "Sign one"), each with one concrete, specific example
   4. Punch line: two short contrasting sentences
@@ -84,6 +87,11 @@ python3 tools/asr_segments.py public/voice/dayN_raw.wav
 
 - Copy `src/Day8.tsx` to `src/DayN.tsx` as the starting point, rename `SCENES8`/`DAY8_DURATION`/`Day8`,
   register it in `src/Root.tsx`.
+- Motion style (owner feedback, Day 13): smooth, not bouncy. Use `src/Day13.tsx` as the reference for motion:
+  eased entrances (`ez` helper, expo ease out) instead of low-damping springs, crossfades between scenes
+  (each Sequence runs 0.35 s past its end under the next scene), staggered rows, strike-throughs and
+  highlights that draw across instead of popping, gentle idle float or breathing, word-by-word serif reveals,
+  a drifting glow on dark cards, and a thin progress bar at the top.
 - Every scene must show something specific to the script, not just text. Mix:
   - animated character scenes (Person, Fg scaler, Table/desk, CoffeeStation, Screen, Spotlight from
     Day6 to Day8),
