@@ -19,6 +19,13 @@ import {Sign2 as D13Sign2} from './day13/Sign2';
 import {Sign3 as D13Sign3} from './day13/Sign3';
 import {Move as D13Move} from './day13/Move';
 import {Punch as D13Punch, End as D13End} from './day13/Outro';
+import {Day14, DAY14_DURATION, SCENES14} from './Day14';
+import {Hook as D14Hook} from './day14/Hook';
+import {Rule as D14Rule} from './day14/Rule';
+import {Move1 as D14Move1} from './day14/Move1';
+import {Move2 as D14Move2} from './day14/Move2';
+import {Move3 as D14Move3} from './day14/Move3';
+import {Punch as D14Punch, End as D14End} from './day14/Outro';
 import {CharTest} from './CharTest';
 import {FPS, s} from './theme';
 
@@ -44,6 +51,16 @@ export const Root: React.FC = () => (
       <Composition id="D13-Move" component={D13Move} durationInFrames={214} fps={FPS} width={1080} height={1920} />
       <Composition id="D13-Punch" component={D13Punch} durationInFrames={174} fps={FPS} width={1080} height={1920} />
       <Composition id="D13-End" component={D13End} durationInFrames={258} fps={FPS} width={1080} height={1920} />
+    </Folder>
+    <Composition id="Day14" component={Day14} durationInFrames={s(DAY14_DURATION)} fps={FPS} width={1080} height={1920} />
+    <Folder name="Day14-Scenes">
+      <Composition id="D14-Hook" component={D14Hook} durationInFrames={SCENES14.Hook} fps={FPS} width={1080} height={1920} />
+      <Composition id="D14-Rule" component={D14Rule} durationInFrames={SCENES14.Rule} fps={FPS} width={1080} height={1920} />
+      <Composition id="D14-Move1" component={D14Move1} durationInFrames={SCENES14.Move1} fps={FPS} width={1080} height={1920} />
+      <Composition id="D14-Move2" component={D14Move2} durationInFrames={SCENES14.Move2} fps={FPS} width={1080} height={1920} />
+      <Composition id="D14-Move3" component={D14Move3} durationInFrames={SCENES14.Move3} fps={FPS} width={1080} height={1920} />
+      <Composition id="D14-Punch" component={D14Punch} durationInFrames={SCENES14.Punch} fps={FPS} width={1080} height={1920} />
+      <Composition id="D14-End" component={D14End} durationInFrames={SCENES14.End} fps={FPS} width={1080} height={1920} />
     </Folder>
     <Composition id="CharTest" component={CharTest} durationInFrames={60} fps={FPS} width={1080} height={1920} />
   </>
