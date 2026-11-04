@@ -54,6 +54,13 @@ import {Move1 as D18Move1} from './day18/Move1';
 import {Move2 as D18Move2} from './day18/Move2';
 import {Move3 as D18Move3} from './day18/Move3';
 import {Punch as D18Punch, End as D18End} from './day18/Outro';
+import {Day19, DAY19_DURATION, SCENES19} from './Day19';
+import {Hook as D19Hook} from './day19/Hook';
+import {Rule as D19Rule} from './day19/Rule';
+import {Move1 as D19Move1} from './day19/Move1';
+import {Move2 as D19Move2} from './day19/Move2';
+import {Move3 as D19Move3} from './day19/Move3';
+import {Punch as D19Punch, End as D19End} from './day19/Outro';
 import {CharTest} from './CharTest';
 import {FPS, s} from './theme';
 
@@ -129,6 +136,16 @@ export const Root: React.FC = () => (
       <Composition id="D18-Move3" component={D18Move3} durationInFrames={SCENES18.Move3} fps={FPS} width={1080} height={1920} />
       <Composition id="D18-Punch" component={D18Punch} durationInFrames={SCENES18.Punch} fps={FPS} width={1080} height={1920} />
       <Composition id="D18-End" component={D18End} durationInFrames={SCENES18.End} fps={FPS} width={1080} height={1920} />
+    </Folder>
+    <Composition id="Day19" component={Day19} durationInFrames={s(DAY19_DURATION)} fps={FPS} width={1080} height={1920} />
+    <Folder name="Day19-Scenes">
+      <Composition id="D19-Hook" component={D19Hook} durationInFrames={SCENES19.Hook} fps={FPS} width={1080} height={1920} />
+      <Composition id="D19-Rule" component={D19Rule} durationInFrames={SCENES19.Rule} fps={FPS} width={1080} height={1920} />
+      <Composition id="D19-Move1" component={D19Move1} durationInFrames={SCENES19.Move1} fps={FPS} width={1080} height={1920} />
+      <Composition id="D19-Move2" component={D19Move2} durationInFrames={SCENES19.Move2} fps={FPS} width={1080} height={1920} />
+      <Composition id="D19-Move3" component={D19Move3} durationInFrames={SCENES19.Move3} fps={FPS} width={1080} height={1920} />
+      <Composition id="D19-Punch" component={D19Punch} durationInFrames={SCENES19.Punch} fps={FPS} width={1080} height={1920} />
+      <Composition id="D19-End" component={D19End} durationInFrames={SCENES19.End} fps={FPS} width={1080} height={1920} />
     </Folder>
     <Composition id="CharTest" component={CharTest} durationInFrames={60} fps={FPS} width={1080} height={1920} />
   </>
