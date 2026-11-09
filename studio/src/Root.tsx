@@ -89,6 +89,13 @@ import {Move1 as D23Move1} from './day23/Move1';
 import {Move2 as D23Move2} from './day23/Move2';
 import {Move3 as D23Move3} from './day23/Move3';
 import {Punch as D23Punch, End as D23End} from './day23/Outro';
+import {Day24, DAY24_DURATION, SCENES24} from './Day24';
+import {Hook as D24Hook} from './day24/Hook';
+import {Rule as D24Rule} from './day24/Rule';
+import {Move1 as D24Move1} from './day24/Move1';
+import {Move2 as D24Move2} from './day24/Move2';
+import {Move3 as D24Move3} from './day24/Move3';
+import {Punch as D24Punch, End as D24End} from './day24/Outro';
 import {CharTest} from './CharTest';
 import {FPS, s} from './theme';
 
@@ -214,6 +221,16 @@ export const Root: React.FC = () => (
       <Composition id="D23-Move3" component={D23Move3} durationInFrames={SCENES23.Move3} fps={FPS} width={1080} height={1920} />
       <Composition id="D23-Punch" component={D23Punch} durationInFrames={SCENES23.Punch} fps={FPS} width={1080} height={1920} />
       <Composition id="D23-End" component={D23End} durationInFrames={SCENES23.End} fps={FPS} width={1080} height={1920} />
+    </Folder>
+    <Composition id="Day24" component={Day24} durationInFrames={s(DAY24_DURATION)} fps={FPS} width={1080} height={1920} />
+    <Folder name="Day24-Scenes">
+      <Composition id="D24-Hook" component={D24Hook} durationInFrames={SCENES24.Hook} fps={FPS} width={1080} height={1920} />
+      <Composition id="D24-Rule" component={D24Rule} durationInFrames={SCENES24.Rule} fps={FPS} width={1080} height={1920} />
+      <Composition id="D24-Move1" component={D24Move1} durationInFrames={SCENES24.Move1} fps={FPS} width={1080} height={1920} />
+      <Composition id="D24-Move2" component={D24Move2} durationInFrames={SCENES24.Move2} fps={FPS} width={1080} height={1920} />
+      <Composition id="D24-Move3" component={D24Move3} durationInFrames={SCENES24.Move3} fps={FPS} width={1080} height={1920} />
+      <Composition id="D24-Punch" component={D24Punch} durationInFrames={SCENES24.Punch} fps={FPS} width={1080} height={1920} />
+      <Composition id="D24-End" component={D24End} durationInFrames={SCENES24.End} fps={FPS} width={1080} height={1920} />
     </Folder>
     <Composition id="CharTest" component={CharTest} durationInFrames={60} fps={FPS} width={1080} height={1920} />
   </>
