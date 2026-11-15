@@ -131,6 +131,13 @@ import {Move1 as D29Move1} from './day29/Move1';
 import {Move2 as D29Move2} from './day29/Move2';
 import {Move3 as D29Move3} from './day29/Move3';
 import {Punch as D29Punch, End as D29End} from './day29/Outro';
+import {Day30, DAY30_DURATION, SCENES30} from './Day30';
+import {Hook as D30Hook} from './day30/Hook';
+import {Rule as D30Rule} from './day30/Rule';
+import {Move1 as D30Move1} from './day30/Move1';
+import {Move2 as D30Move2} from './day30/Move2';
+import {Move3 as D30Move3} from './day30/Move3';
+import {Punch as D30Punch, End as D30End} from './day30/Outro';
 import {CharTest} from './CharTest';
 import {FPS, s} from './theme';
 
@@ -316,6 +323,16 @@ export const Root: React.FC = () => (
       <Composition id="D29-Move3" component={D29Move3} durationInFrames={SCENES29.Move3} fps={FPS} width={1080} height={1920} />
       <Composition id="D29-Punch" component={D29Punch} durationInFrames={SCENES29.Punch} fps={FPS} width={1080} height={1920} />
       <Composition id="D29-End" component={D29End} durationInFrames={SCENES29.End} fps={FPS} width={1080} height={1920} />
+    </Folder>
+    <Composition id="Day30" component={Day30} durationInFrames={s(DAY30_DURATION)} fps={FPS} width={1080} height={1920} />
+    <Folder name="Day30-Scenes">
+      <Composition id="D30-Hook" component={D30Hook} durationInFrames={SCENES30.Hook} fps={FPS} width={1080} height={1920} />
+      <Composition id="D30-Rule" component={D30Rule} durationInFrames={SCENES30.Rule} fps={FPS} width={1080} height={1920} />
+      <Composition id="D30-Move1" component={D30Move1} durationInFrames={SCENES30.Move1} fps={FPS} width={1080} height={1920} />
+      <Composition id="D30-Move2" component={D30Move2} durationInFrames={SCENES30.Move2} fps={FPS} width={1080} height={1920} />
+      <Composition id="D30-Move3" component={D30Move3} durationInFrames={SCENES30.Move3} fps={FPS} width={1080} height={1920} />
+      <Composition id="D30-Punch" component={D30Punch} durationInFrames={SCENES30.Punch} fps={FPS} width={1080} height={1920} />
+      <Composition id="D30-End" component={D30End} durationInFrames={SCENES30.End} fps={FPS} width={1080} height={1920} />
     </Folder>
     <Composition id="CharTest" component={CharTest} durationInFrames={60} fps={FPS} width={1080} height={1920} />
   </>
