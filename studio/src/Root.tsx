@@ -145,6 +145,13 @@ import {Move1 as D31Move1} from './day31/Move1';
 import {Move2 as D31Move2} from './day31/Move2';
 import {Move3 as D31Move3} from './day31/Move3';
 import {Punch as D31Punch, End as D31End} from './day31/Outro';
+import {Day32, DAY32_DURATION, SCENES32} from './Day32';
+import {Hook as D32Hook} from './day32/Hook';
+import {Rule as D32Rule} from './day32/Rule';
+import {Move1 as D32Move1} from './day32/Move1';
+import {Move2 as D32Move2} from './day32/Move2';
+import {Move3 as D32Move3} from './day32/Move3';
+import {Punch as D32Punch, End as D32End} from './day32/Outro';
 import {CharTest} from './CharTest';
 import {FPS, s} from './theme';
 
@@ -350,6 +357,16 @@ export const Root: React.FC = () => (
       <Composition id="D31-Move3" component={D31Move3} durationInFrames={SCENES31.Move3} fps={FPS} width={1080} height={1920} />
       <Composition id="D31-Punch" component={D31Punch} durationInFrames={SCENES31.Punch} fps={FPS} width={1080} height={1920} />
       <Composition id="D31-End" component={D31End} durationInFrames={SCENES31.End} fps={FPS} width={1080} height={1920} />
+    </Folder>
+    <Composition id="Day32" component={Day32} durationInFrames={s(DAY32_DURATION)} fps={FPS} width={1080} height={1920} />
+    <Folder name="Day32-Scenes">
+      <Composition id="D32-Hook" component={D32Hook} durationInFrames={SCENES32.Hook} fps={FPS} width={1080} height={1920} />
+      <Composition id="D32-Rule" component={D32Rule} durationInFrames={SCENES32.Rule} fps={FPS} width={1080} height={1920} />
+      <Composition id="D32-Move1" component={D32Move1} durationInFrames={SCENES32.Move1} fps={FPS} width={1080} height={1920} />
+      <Composition id="D32-Move2" component={D32Move2} durationInFrames={SCENES32.Move2} fps={FPS} width={1080} height={1920} />
+      <Composition id="D32-Move3" component={D32Move3} durationInFrames={SCENES32.Move3} fps={FPS} width={1080} height={1920} />
+      <Composition id="D32-Punch" component={D32Punch} durationInFrames={SCENES32.Punch} fps={FPS} width={1080} height={1920} />
+      <Composition id="D32-End" component={D32End} durationInFrames={SCENES32.End} fps={FPS} width={1080} height={1920} />
     </Folder>
     <Composition id="CharTest" component={CharTest} durationInFrames={60} fps={FPS} width={1080} height={1920} />
   </>
